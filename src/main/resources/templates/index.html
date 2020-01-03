@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>???</title>
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+<script type="text/javascript" src="../static/js/my.js" th:src="@{/js/my.js}">
+</script>
+</head>
+<body>
+<!-- <h1>Hello World!</h1>
+欢迎使用thymeleaf -->
+
+<div id="d">
+
+<table id="tb" border="1px">
+	<tr>
+		<th>编号</th>
+		<th>用户名</th>
+		<th>姓名</th>
+		<th>操作 （<a href="/add">添加</a>）</th>
+	</tr>
+	<tr th:each="s:${list}" >
+		<td th:text="${s.id}"></td>
+		<td th:text="${s.username}">2</td>
+		<td th:text="${s.name}">3</td>
+		<td ><a th:href="'/queryById?id='+${s.id}">修改</a> <a th:href="'/deleteId?id='+${s.id}" >删除</a></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>
