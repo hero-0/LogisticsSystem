@@ -41,6 +41,11 @@ public class Goods implements Serializable {
     private String goodsAddressee;
 
     /**
+     * 订单id
+     */
+    private String orderId;
+
+    /**
      * 发送人id（用户id）
      */
     private String senderId;
@@ -91,6 +96,14 @@ public class Goods implements Serializable {
         this.goodsAddressee = goodsAddressee;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     public String getSenderId() {
         return senderId;
     }
@@ -115,6 +128,7 @@ public class Goods implements Serializable {
         ", goodsInformation=" + goodsInformation +
         ", goodsWeight=" + goodsWeight +
         ", goodsAddressee=" + goodsAddressee +
+        ", orderId=" + orderId +
         ", senderId=" + senderId +
         ", createTime=" + createTime +
         "}";

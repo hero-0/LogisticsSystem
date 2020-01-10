@@ -27,6 +27,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!--为了解决thymeleaf模板中,对html标签要求太严格的问题!-->
+        <!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
+		<dependency>
+		    <groupId>net.sourceforge.nekohtml</groupId>
+		    <artifactId>nekohtml</artifactId>
+		    <version>1.9.22</version>
+		</dependency>
 		<!-- mysql驱动 版本和所安装数据库版本一致 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -73,5 +80,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+		
 	</dependencies>
 </project>

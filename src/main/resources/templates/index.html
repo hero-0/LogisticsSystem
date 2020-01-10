@@ -1,32 +1,157 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8"/>
-<title>???</title>
-<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}"/>
-<script type="text/javascript" src="../static/js/my.js" th:src="@{/js/my.js}">
-</script>
-</head>
-<body>
-<!-- <h1>Hello World!</h1>
-欢迎使用thymeleaf -->
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>layout 后台大布局 - Layui</title>
+		<link rel="stylesheet" href="../static/css/layui/css/layui.css" th:href="@{/css/layui/css/layui.css}" />
+		<script charset="UTF-8" src="../static/css/layui/layui.js" th:src="@{/css/layui/layui.js}"></script>
+	</head>
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">layui 后台布局</div>
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item"><a href="">控制台</a></li>
+					<li class="layui-nav-item"><a href="">商品管理</a></li>
+					<li class="layui-nav-item"><a href="">用户</a></li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">其它系统</a>
+						<dl class="layui-nav-child">
+							<dd><a href="#">邮件管理</a></dd>
+							<dd><a href="#">消息管理</a></dd>
+							<dd><a href="#">授权管理</a></dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href="javascript:;" th:text="${m.memberUsername}">
+						</a>
+						<dl class="layui-nav-child">
+							<dd><a href="">基本资料</a></dd>
+							<dd><a href="">安全设置</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item"><a href="">退了</a></li>
+				</ul>
+			</div>
 
-<div id="d">
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+						<li class="layui-nav-item layui-nav-itemed">
+							<a class="" href="javascript:;">xxx管理</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;">列表一</a></dd>
+								<dd><a href="javascript:;">列表二</a></dd>
+								<dd><a href="javascript:;">列表三</a></dd>
+								<dd><a href="">超链接</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;">解决方案</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;">列表一</a></dd>
+								<dd><a href="javascript:;">列表二</a></dd>
+								<dd><a href="">超链接</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item"><a href="">云市场</a></li>
+						<li class="layui-nav-item"><a href="">发布商品</a></li>
+					</ul>
+				</div>
+			</div>
 
-<table id="tb" border="1px">
-	<tr>
-		<th>编号</th>
-		<th>用户名</th>
-		<th>姓名</th>
-		<th>操作 （<a href="/add">添加</a>）</th>
-	</tr>
-	<tr th:each="s:${list}" >
-		<td th:text="${s.id}"></td>
-		<td th:text="${s.username}">2</td>
-		<td th:text="${s.name}">3</td>
-		<td ><a th:href="'/queryById?id='+${s.id}">修改</a> <a th:href="'/deleteId?id='+${s.id}" >删除</a></td>
-	</tr>
-</table>
-</div>
-</body>
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
+				<div>
+				 	<div class="layui-btn-group demoTable">
+					  <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
+					  <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
+					  <button class="layui-btn" data-type="isAll">验证是否全选</button>
+					</div> 
+					 
+					<table class="layui-table" lay-data="{width: 1780, height:804, url:'/member/queryPage', page:true,id:'idTest'}" lay-filter="demo" >
+					  <thead>
+					    <tr>
+					      <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+					      <!-- <th lay-data="{field:'memberId', width:80, sort: true, fixed: false}">ID</th> -->
+					      <th lay-data="{field:'memberName', width:80}">姓名</th>
+					      <th lay-data="{field:'memberUsername', width:80, sort: true}">用户名</th>
+					      <th lay-data="{field:'memberPhone', width:80}">联系电话</th>
+					      <th lay-data="{field:'memberAddress', width:160}">地址</th>
+					    </tr>
+					  </thead>
+					</table>
+					 
+					<script type="text/html" id="barDemo">
+					  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+					  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+					  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+					</script>
+					          
+					<script charset="UTF-8" src="../static/css/layui/layui.js" th:src="@{/css/layui/layui.js}"></script>
+					<script>
+					layui.use('table', function(){
+					  var table = layui.table;
+					  //监听表格复选框选择
+					  table.on('checkbox(demo)', function(obj){
+					    console.log(obj)
+					  });
+					  //监听工具条
+					  table.on('tool(demo)', function(obj){
+					    var data = obj.data;
+					    if(obj.event === 'detail'){
+					      layer.msg('ID：'+ data.memberId + ' 的查看操作');
+					    } else if(obj.event === 'del'){
+					      layer.confirm('真的删除行么', function(index){
+					        obj.del();
+					        layer.close(index);
+					      });
+					    } else if(obj.event === 'edit'){
+					      layer.alert('编辑行：<br />'+ JSON.stringify(data))
+					    }
+					  });
+					  
+					  var $ = layui.$, active = {
+					    getCheckData: function(){ //获取选中数据
+					      var checkStatus = table.checkStatus('idTest')
+					      ,data = checkStatus.data;
+					      layer.alert(JSON.stringify(data));
+					    }
+					    ,getCheckLength: function(){ //获取选中数目
+					      var checkStatus = table.checkStatus('idTest')
+					      ,data = checkStatus.data;
+					      layer.msg('选中了：'+ data.length + ' 个');
+					    }
+					    ,isAll: function(){ //验证是否全选
+					      var checkStatus = table.checkStatus('idTest');
+					      layer.msg(checkStatus.isAll ? '全选': '未全选')
+					    }
+					  };
+					  
+					  $('.demoTable .layui-btn').on('click', function(){
+					    var type = $(this).data('type');
+					    active[type] ? active[type].call(this) : '';
+					  });
+					});
+					</script>
+				</div>
+			</div>
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				© layui.com - 底部固定区域
+			</div>
+		</div>
+		<!-- <script src="../src/layui.js"></script> -->
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+			});
+		</script>
+	</body>
 </html>

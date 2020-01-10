@@ -1,6 +1,9 @@
 package com.entor.service;
 
 import com.entor.entity.Member;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +16,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMemberService extends IService<Member> {
 
+	public Member login(String username,String password);
+	
 }

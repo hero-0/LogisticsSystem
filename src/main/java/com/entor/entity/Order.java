@@ -32,6 +32,12 @@ public class Order implements Serializable {
     private String senderId;
 
     /**
+     * 1审核通过、0审核未通过、-1异常
+     */
+    @TableField("Order_state")
+    private Integer orderState;
+
+    /**
      * 订单派送时间
      */
     @TableField("order_Send_out_date")
@@ -67,6 +73,14 @@ public class Order implements Serializable {
         this.senderId = senderId;
     }
 
+    public Integer getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(Integer orderState) {
+        this.orderState = orderState;
+    }
+
     public Date getOrderSendOutDate() {
         return orderSendOutDate;
     }
@@ -89,6 +103,7 @@ public class Order implements Serializable {
         "orderId=" + orderId +
         ", orderInformation=" + orderInformation +
         ", senderId=" + senderId +
+        ", orderState=" + orderState +
         ", orderSendOutDate=" + orderSendOutDate +
         ", createTime=" + createTime +
         "}";

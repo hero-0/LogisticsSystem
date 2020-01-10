@@ -26,6 +26,16 @@ public class Staff implements Serializable {
     private String staffName;
 
     /**
+     * 员工用户名
+     */
+    private String staffUsername;
+
+    /**
+     * 员工密码
+     */
+    private String staffPassword;
+
+    /**
      * 员工联系方式
      */
     private String staffPhone;
@@ -57,6 +67,22 @@ public class Staff implements Serializable {
         this.staffName = staffName;
     }
 
+    public String getStaffUsername() {
+        return staffUsername;
+    }
+
+    public void setStaffUsername(String staffUsername) {
+        this.staffUsername = staffUsername;
+    }
+
+    public String getStaffPassword() {
+        return staffPassword;
+    }
+
+    public void setStaffPassword(String staffPassword) {
+        this.staffPassword = staffPassword;
+    }
+
     public String getStaffPhone() {
         return staffPhone;
     }
@@ -86,6 +112,8 @@ public class Staff implements Serializable {
         return "Staff{" +
         "staffId=" + staffId +
         ", staffName=" + staffName +
+        ", staffUsername=" + staffUsername +
+        ", staffPassword=" + staffPassword +
         ", staffPhone=" + staffPhone +
         ", staffWorkAddress=" + staffWorkAddress +
         ", createTime=" + createTime +
